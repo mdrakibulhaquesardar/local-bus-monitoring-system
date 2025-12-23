@@ -1,4 +1,7 @@
 <?php
+// Load base path configuration
+require_once __DIR__ . '/config.php';
+
 $host = "localhost";
 $user = "root";
 $password = "";

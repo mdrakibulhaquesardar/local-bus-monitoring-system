@@ -2,6 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+require_once __DIR__ . '/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local Bus Monitoring System</title>
-    <link rel="stylesheet" href="/bus/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/style.css">
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -30,11 +31,11 @@ if (session_status() === PHP_SESSION_NONE) {
         <h1 class="site-title">Local Bus Monitoring</h1>
         <?php if (!empty($_SESSION['user_id'])): ?>
             <nav class="main-nav">
-                <a href="/bus/pages/dashboard.php"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
-                <a href="/bus/pages/routes.php"><i class="fa-solid fa-route"></i> Routes</a>
-                <a href="/bus/pages/map.php"><i class="fa-solid fa-map-location-dot"></i> Map</a>
-                <a href="/bus/pages/profile.php"><i class="fa-solid fa-user"></i> Profile</a>
-                <a href="/bus/pages/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                <a href="<?php echo BASE_PATH; ?>/pages/dashboard.php"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+                <a href="<?php echo BASE_PATH; ?>/pages/routes.php"><i class="fa-solid fa-route"></i> Routes</a>
+                <a href="<?php echo BASE_PATH; ?>/pages/map.php"><i class="fa-solid fa-map-location-dot"></i> Map</a>
+                <a href="<?php echo BASE_PATH; ?>/pages/profile.php"><i class="fa-solid fa-user"></i> Profile</a>
+                <a href="<?php echo BASE_PATH; ?>/pages/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
             </nav>
         <?php endif; ?>
     </div>

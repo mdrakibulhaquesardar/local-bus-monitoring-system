@@ -39,9 +39,10 @@ if ($user_id > 0 && (isset($_GET['fav']) || isset($_GET['unfav']))) {
     }
 
     // Redirect back to routes page without fav/unfav parameters
+    require_once __DIR__ . "/../includes/config.php";
     $redirectParams = $_GET;
     unset($redirectParams['fav'], $redirectParams['unfav']);
-    $redirectUrl = '/bus/pages/routes.php';
+    $redirectUrl = BASE_PATH . '/pages/routes.php';
     if (!empty($redirectParams)) {
         $redirectUrl .= '?' . http_build_query($redirectParams);
     }
@@ -137,7 +138,7 @@ if ($viewRouteId > 0) {
                 </p>
             </div>
             <div class="dashboard-actions">
-                <a href="/bus/pages/routes.php" class="link-small">← Back to all routes</a>
+                <a href="<?php echo BASE_PATH; ?>/pages/routes.php" class="link-small">← Back to all routes</a>
             </div>
         </div>
         
@@ -150,9 +151,9 @@ if ($viewRouteId > 0) {
                     </div>
                     <div>
                         <?php if ($isFavourite): ?>
-                            <a href="/bus/pages/routes.php?route_id=<?php echo $viewRouteId; ?>&unfav=<?php echo $viewRouteId; ?>" class="btn-pill-small btn-pill-secondary">Remove from Favourites</a>
+                            <a href="<?php echo BASE_PATH; ?>/pages/routes.php?route_id=<?php echo $viewRouteId; ?>&unfav=<?php echo $viewRouteId; ?>" class="btn-pill-small btn-pill-secondary">Remove from Favourites</a>
                         <?php else: ?>
-                            <a href="/bus/pages/routes.php?route_id=<?php echo $viewRouteId; ?>&fav=<?php echo $viewRouteId; ?>" class="btn-pill-small">Add to Favourites</a>
+                            <a href="<?php echo BASE_PATH; ?>/pages/routes.php?route_id=<?php echo $viewRouteId; ?>&fav=<?php echo $viewRouteId; ?>" class="btn-pill-small">Add to Favourites</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -238,7 +239,7 @@ if ($viewRouteId > 0) {
         <?php else: ?>
             <section class="card">
                 <p class="empty-state">Route not found.</p>
-                <a href="/bus/pages/routes.php" class="btn-primary">Back to Routes</a>
+                <a href="<?php echo BASE_PATH; ?>/pages/routes.php" class="btn-primary">Back to Routes</a>
             </section>
         <?php endif; ?>
     </section>
@@ -327,7 +328,7 @@ include __DIR__ . "/../includes/header.php";
             </p>
         </div>
         <div class="dashboard-actions">
-            <a href="/bus/pages/dashboard.php" class="link-small">Back to dashboard</a>
+            <a href="<?php echo BASE_PATH; ?>/pages/dashboard.php" class="link-small">Back to dashboard</a>
         </div>
     </div>
 
@@ -355,7 +356,7 @@ include __DIR__ . "/../includes/header.php";
             </div>
             <div class="dashboard-search-actions">
                 <button type="submit" class="btn-primary">Search</button>
-                <a href="/bus/pages/routes.php" class="link-small">Clear</a>
+                <a href="<?php echo BASE_PATH; ?>/pages/routes.php" class="link-small">Clear</a>
             </div>
         </form>
 
@@ -375,7 +376,7 @@ include __DIR__ . "/../includes/header.php";
                     <?php foreach ($routes as $route): ?>
                         <tr>
                             <td>
-                                    <a href="/bus/pages/routes.php?route_id=<?php echo (int) $route['route_id']; ?>" class="route-link">
+                                    <a href="<?php echo BASE_PATH; ?>/pages/routes.php?route_id=<?php echo (int) $route['route_id']; ?>" class="route-link">
                                         <i class="fa-solid fa-route"></i>
                                         <?php echo htmlspecialchars($route['route_name']); ?>
                                     </a>
@@ -389,13 +390,13 @@ include __DIR__ . "/../includes/header.php";
                             </td>
                             <td>
                                 <div class="route-actions">
-                                    <a href="/bus/pages/routes.php?route_id=<?php echo (int) $route['route_id']; ?>" class="btn-pill-small">
+                                    <a href="<?php echo BASE_PATH; ?>/pages/routes.php?route_id=<?php echo (int) $route['route_id']; ?>" class="btn-pill-small">
                                         <i class="fa-solid fa-eye"></i> View Details
                                     </a>
                                     <?php $isFav = isset($favouriteRouteIds[(int) $route['route_id']]); ?>
                                     <?php if ($isFav): ?>
                                         <a
-                                            href="/bus/pages/routes.php?<?php
+                                            href="<?php echo BASE_PATH; ?>/pages/routes.php?<?php
                                                 $params = $_GET;
                                                 $params['unfav'] = (int) $route['route_id'];
                                                 echo htmlspecialchars(http_build_query($params));
@@ -407,7 +408,7 @@ include __DIR__ . "/../includes/header.php";
                                         </a>
                                     <?php else: ?>
                                         <a
-                                            href="/bus/pages/routes.php?<?php
+                                            href="<?php echo BASE_PATH; ?>/pages/routes.php?<?php
                                                 $params = $_GET;
                                                 $params['fav'] = (int) $route['route_id'];
                                                 echo htmlspecialchars(http_build_query($params));

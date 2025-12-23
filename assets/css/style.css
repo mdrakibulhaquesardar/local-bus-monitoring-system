@@ -647,12 +647,12 @@ body {
 
 /* Default image for login page */
 .auth-body .auth-visual {
-    background-image: url("/bus/assets/img/login_image.jpg");
+    background-image: url("../img/login_image.jpg");
 }
 
 /* Override for register page image */
 .register-page .auth-visual {
-    background-image: url("/bus/assets/img/register_image.jpg");
+    background-image: url("../img/register_image.jpg");
 }
 
 .auth-visual-overlay {

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             $message = "Login successful! Welcome, " . htmlspecialchars($row['name']);
             $messageClass = "alert-success";
 
-            header("Location: /bus/pages/dashboard.php");
+            header("Location: " . BASE_PATH . "/pages/dashboard.php");
             exit();
         } else {
             $message = "Incorrect password";
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Login</title>
-    <link rel="stylesheet" href="/bus/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/style.css">
 </head>
 <body class="auth-body">
     <section class="auth-page">
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                             “Simply all the tools that my team and I need.”
                         </p>
                         <p class="auth-quote-meta">
-                            Project by <span>Rakib</span>
+                            Project by <span>Nahin</span>
                         </p>
                     </div>
                 </div>
@@ -117,8 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                     </form>
 
                     <div class="auth-meta">
-                        <span>Don’t have an account?</span>
-                        <a href="/bus/pages/register.php">Sign up</a>
+                        <span>Don't have an account?</span>
+                        <a href="<?php echo BASE_PATH; ?>/pages/register.php">Sign up</a>
                     </div>
                 </div>
             </div>

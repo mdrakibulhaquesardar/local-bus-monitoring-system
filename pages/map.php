@@ -47,7 +47,7 @@ if ($result = mysqli_query($conn, $sql)) {
             </p>
         </div>
         <div class="dashboard-actions">
-            <a href="/bus/pages/dashboard.php" class="link-small">Back to dashboard</a>
+            <a href="<?php echo BASE_PATH; ?>/pages/dashboard.php" class="link-small">Back to dashboard</a>
         </div>
     </div>
 

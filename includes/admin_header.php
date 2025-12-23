@@ -2,6 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+require_once __DIR__ . '/config.php';
 include __DIR__ . "/admin_auth.php";
 require_admin_login();
 
@@ -15,8 +16,8 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Local Bus Monitoring</title>
-    <link rel="stylesheet" href="/bus/assets/css/style.css">
-    <link rel="stylesheet" href="/bus/assets/css/admin.css">
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/admin.css">
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -42,49 +43,49 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
             <nav class="sidebar-nav">
                 <ul class="sidebar-menu">
                     <li class="sidebar-menu-item <?php echo ($current_page === 'dashboard.php') ? 'active' : ''; ?>">
-                        <a href="/bus/admin/dashboard.php" class="sidebar-menu-link">
+                        <a href="<?php echo BASE_PATH; ?>/admin/dashboard.php" class="sidebar-menu-link">
                             <i class="fa-solid fa-gauge-high"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item <?php echo ($current_dir === 'routes') ? 'active' : ''; ?>">
-                        <a href="/bus/admin/routes/index.php" class="sidebar-menu-link">
+                        <a href="<?php echo BASE_PATH; ?>/admin/routes/index.php" class="sidebar-menu-link">
                             <i class="fa-solid fa-route"></i>
                             <span>Routes</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item <?php echo ($current_dir === 'stops') ? 'active' : ''; ?>">
-                        <a href="/bus/admin/stops/index.php" class="sidebar-menu-link">
+                        <a href="<?php echo BASE_PATH; ?>/admin/stops/index.php" class="sidebar-menu-link">
                             <i class="fa-solid fa-map-marker-alt"></i>
                             <span>Stops</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item <?php echo ($current_dir === 'schedules') ? 'active' : ''; ?>">
-                        <a href="/bus/admin/schedules/index.php" class="sidebar-menu-link">
+                        <a href="<?php echo BASE_PATH; ?>/admin/schedules/index.php" class="sidebar-menu-link">
                             <i class="fa-solid fa-clock"></i>
                             <span>Schedules</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item <?php echo ($current_dir === 'buses') ? 'active' : ''; ?>">
-                        <a href="/bus/admin/buses/index.php" class="sidebar-menu-link">
+                        <a href="<?php echo BASE_PATH; ?>/admin/buses/index.php" class="sidebar-menu-link">
                             <i class="fa-solid fa-bus"></i>
                             <span>Buses</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item <?php echo ($current_dir === 'drivers') ? 'active' : ''; ?>">
-                        <a href="/bus/admin/drivers/index.php" class="sidebar-menu-link">
+                        <a href="<?php echo BASE_PATH; ?>/admin/drivers/index.php" class="sidebar-menu-link">
                             <i class="fa-solid fa-id-card"></i>
                             <span>Drivers</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item <?php echo ($current_dir === 'users') ? 'active' : ''; ?>">
-                        <a href="/bus/admin/users/index.php" class="sidebar-menu-link">
+                        <a href="<?php echo BASE_PATH; ?>/admin/users/index.php" class="sidebar-menu-link">
                             <i class="fa-solid fa-users"></i>
                             <span>Users</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item <?php echo ($current_dir === 'locations') ? 'active' : ''; ?>">
-                        <a href="/bus/admin/locations/index.php" class="sidebar-menu-link">
+                        <a href="<?php echo BASE_PATH; ?>/admin/locations/index.php" class="sidebar-menu-link">
                             <i class="fa-solid fa-map-location-dot"></i>
                             <span>Bus Locations</span>
                         </a>
@@ -93,7 +94,7 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
             </nav>
 
             <div class="sidebar-footer">
-                <a href="/bus/admin/logout.php" class="sidebar-logout">
+                <a href="<?php echo BASE_PATH; ?>/admin/logout.php" class="sidebar-logout">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span>Logout</span>
                 </a>

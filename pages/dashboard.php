@@ -227,7 +227,7 @@ $notifications = [
             </p>
         </div>
         <div class="dashboard-actions">
-            <a href="/bus/pages/routes.php" class="btn-primary dashboard-primary-btn">Browse all routes</a>
+            <a href="<?php echo BASE_PATH; ?>/pages/routes.php" class="btn-primary dashboard-primary-btn">Browse all routes</a>
         </div>
     </div>
 
@@ -312,7 +312,7 @@ $notifications = [
                     </div>
                     <div class="dashboard-search-actions">
                         <button type="submit" class="btn-primary">Search routes</button>
-                        <a href="/bus/pages/dashboard.php" class="link-small">Clear</a>
+                        <a href="<?php echo BASE_PATH; ?>/pages/dashboard.php" class="link-small">Clear</a>
                     </div>
                 </form>
 
@@ -349,7 +349,7 @@ $notifications = [
                                         <?php endif; ?>
                                     </td>
                                     <td>
-                                        <a href="/bus/pages/routes.php?route_id=<?php echo (int)$route['route_id']; ?>" class="link-small">
+                                        <a href="<?php echo BASE_PATH; ?>/pages/routes.php?route_id=<?php echo (int)$route['route_id']; ?>" class="link-small">
                                             View details
                                         </a>
                                     </td>
@@ -360,7 +360,7 @@ $notifications = [
                     <?php else: ?>
                         <p class="empty-state">
                             No routes found. Try adjusting your search or visit the
-                            <a href="/bus/pages/routes.php" class="link-small">full routes page</a>.
+                            <a href="<?php echo BASE_PATH; ?>/pages/routes.php" class="link-small">full routes page</a>.
                         </p>
                     <?php endif; ?>
                 </div>
@@ -404,7 +404,7 @@ $notifications = [
                             <?php foreach ($favouriteRoutes as $fav): ?>
                                 <tr>
                                     <td>
-                                        <a href="/bus/pages/routes.php?route_id=<?php echo (int)$fav['route_id']; ?>" class="link-small">
+                                        <a href="<?php echo BASE_PATH; ?>/pages/routes.php?route_id=<?php echo (int)$fav['route_id']; ?>" class="link-small">
                                             <?php echo htmlspecialchars($fav['route_name']); ?>
                                         </a>
                                     </td>

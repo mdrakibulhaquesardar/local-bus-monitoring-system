@@ -1,4 +1,9 @@
 </main>
+<?php
+if (!defined('BASE_PATH')) {
+    require_once __DIR__ . '/config.php';
+}
+?>
 <footer class="site-footer">
     <div class="footer-inner container">
         <div class="footer-brand">
@@ -12,17 +17,17 @@
             <div class="footer-column">
                 <h4>Product</h4>
                 <ul>
-                    <li><a href="/bus/index.php">Overview</a></li>
-                    <li><a href="/bus/pages/login.php">Login</a></li>
-                    <li><a href="/bus/pages/register.php">Register</a></li>
+                    <li><a href="<?php echo BASE_PATH; ?>/index.php">Overview</a></li>
+                    <li><a href="<?php echo BASE_PATH; ?>/pages/login.php">Login</a></li>
+                    <li><a href="<?php echo BASE_PATH; ?>/pages/register.php">Register</a></li>
                 </ul>
             </div>
 
             <div class="footer-column">
                 <h4>Routes</h4>
                 <ul>
-                    <li><a href="/bus/pages/dashboard.php">User dashboard</a></li>
-                    <li><a href="/bus/pages/routes.php">Available routes</a></li>
+                    <li><a href="<?php echo BASE_PATH; ?>/pages/dashboard.php">User dashboard</a></li>
+                    <li><a href="<?php echo BASE_PATH; ?>/pages/routes.php">Available routes</a></li>
                 </ul>
             </div>
 
