@@ -2,7 +2,6 @@
 <footer class="site-footer">
     <div class="footer-inner container">
         <div class="footer-brand">
-            <div class="footer-logo-circle"></div>
             <div>
                 <h3 class="footer-title">Local Bus Monitoring</h3>
                 <p class="footer-tagline">Real-time campus bus tracking for students and commuters.</p>

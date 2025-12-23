@@ -33,23 +33,54 @@ $routes_sql = "
            MAX(s.arrival_time) AS last_arrival
     FROM route r
     LEFT JOIN schedule s ON s.route_id = r.route_id
-    LEFT JOIN route_stops rs ON rs.route_id = r.route_id
-    LEFT JOIN stop st ON st.stop_id = rs.stop_id
     WHERE 1 = 1
 ";
+
 $params = [];
 $types = "";
 
-if ($search_origin !== '') {
-    $routes_sql .= " AND st.stop_name LIKE ? ";
+// If both origin and destination are provided, find routes where origin comes before destination
+if ($search_origin !== '' && $search_destination !== '') {
+    $routes_sql .= "
+        AND r.route_id IN (
+            SELECT DISTINCT rs1.route_id
+            FROM route_stops rs1
+            JOIN stop st1 ON st1.stop_id = rs1.stop_id
+            JOIN route_stops rs2 ON rs2.route_id = rs1.route_id
+            JOIN stop st2 ON st2.stop_id = rs2.stop_id
+            WHERE st1.stop_name LIKE ? 
+            AND st2.stop_name LIKE ?
+            AND rs1.stop_order < rs2.stop_order
+        )
+    ";
+    $like_origin = "%" . $search_origin . "%";
+    $like_destination = "%" . $search_destination . "%";
+    $params[] = &$like_origin;
+    $params[] = &$like_destination;
+    $types .= "ss";
+} elseif ($search_origin !== '') {
+    // Only origin provided
+    $routes_sql .= "
+        AND r.route_id IN (
+            SELECT DISTINCT rs.route_id
+            FROM route_stops rs
+            JOIN stop st ON st.stop_id = rs.stop_id
+            WHERE st.stop_name LIKE ?
+        )
+    ";
     $like_origin = "%" . $search_origin . "%";
     $params[] = &$like_origin;
     $types .= "s";
-}
-
-// For this simplified version, destination uses the same stop_name filter
-if ($search_destination !== '') {
-    $routes_sql .= " AND st.stop_name LIKE ? ";
+} elseif ($search_destination !== '') {
+    // Only destination provided
+    $routes_sql .= "
+        AND r.route_id IN (
+            SELECT DISTINCT rs.route_id
+            FROM route_stops rs
+            JOIN stop st ON st.stop_id = rs.stop_id
+            WHERE st.stop_name LIKE ?
+        )
+    ";
     $like_destination = "%" . $search_destination . "%";
     $params[] = &$like_destination;
     $types .= "s";

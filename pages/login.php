@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                             “Simply all the tools that my team and I need.”
                         </p>
                         <p class="auth-quote-meta">
-                            Project by <span>Nahin</span>
+                            Project by <span>Rakib</span>
                         </p>
                     </div>
                 </div>

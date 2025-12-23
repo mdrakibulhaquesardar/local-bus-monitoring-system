@@ -1070,12 +1070,14 @@ body {
     background: #2563eb0d;
     color: #2563eb;
     border: 1px solid #2563eb33;
+    text-decoration: none;
 }
 
 .btn-pill-small:hover {
     background: #2563eb1a;
     color: #1d4ed8;
     border-color: #2563eb66;
+    text-decoration: none;
 }
 
 .btn-pill-secondary {
@@ -1253,8 +1255,8 @@ body {
     width: 28px;
     height: 28px;
     border-radius: 999px;
-    background: #2563eb;
-    color: #ffffff;
+    background: #ec4899 !important;
+    color: #ffffff !important;
     font-weight: 600;
     font-size: 0.85rem;
     flex-shrink: 0;
